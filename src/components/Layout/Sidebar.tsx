@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {
   Box,
@@ -18,19 +20,10 @@ import {
   Nature as CarbonIcon,
   Assessment as ReportsIcon,
 } from '@mui/icons-material';
-import Image from 'next/image';
-import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const drawerWidth = 280;
-
-const menuItems = [
-  { text: 'Overview', icon: DashboardIcon, path: '/' },
-  { text: 'Electricity', icon: ElectricityIcon, path: '/electricity' },
-  { text: 'Water', icon: WaterIcon, path: '/water' },
-  { text: 'Fuel', icon: FuelIcon, path: '/fuel' },
-  { text: 'Carbon Footprint', icon: CarbonIcon, path: '/carbon' },
-  { text: 'Reports', icon: ReportsIcon, path: '/reports' },
-];
 
 interface SidebarProps {
   open: boolean;
@@ -38,15 +31,16 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ open, onClose }: SidebarProps) {
-  const router = useRouter();
   const pathname = usePathname();
 
-  const handleNavigation = (path: string) => {
-    router.push(path);
-    if (window.innerWidth < 768) {
-      onClose();
-    }
-  };
+  const menuItems = [
+    { text: 'Overview', icon: <DashboardIcon />, path: '/' },
+    { text: 'Electricity', icon: <ElectricityIcon />, path: '/electricity' },
+    { text: 'Water', icon: <WaterIcon />, path: '/water' },
+    { text: 'Fuel', icon: <FuelIcon />, path: '/fuel' },
+    { text: 'Carbon Footprint', icon: <CarbonIcon />, path: '/carbon' },
+    { text: 'Reports', icon: <ReportsIcon />, path: '/reports' },
+  ];
 
   return (
     <Drawer
@@ -59,62 +53,62 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           boxSizing: 'border-box',
           backgroundColor: 'primary.main',
           color: 'white',
+          border: 'none',
+          boxShadow: '2px 0 8px rgba(0,0,0,0.1)',
         },
       }}
     >
       <Box sx={{ p: 3, textAlign: 'center' }}>
-        <Box sx={{ mb: 2 }}>
-          <Image
-            src="/strathmore-logo.png"
-            alt="Strathmore University"
-            width={120}
-            height={120}
-            style={{ objectFit: 'contain' }}
-          />
-        </Box>
-        <Typography variant="h6" sx={{ fontWeight: 600, color: 'white' }}>
+        <Box
+          component="img"
+          src="/strathmore-logo.png"
+          alt="Strathmore University Logo"
+          sx={{
+            width: '80px',
+            height: 'auto',
+            mb: 2,
+          }}
+        />
+        <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
           Energy Dashboard
         </Typography>
-        <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+        <Typography variant="body2" sx={{ opacity: 0.8 }}>
           Strathmore University
         </Typography>
       </Box>
       
-      <Divider sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }} />
+      <Divider sx={{ backgroundColor: 'rgba(255,255,255,0.2)', mx: 2 }} />
       
-      <List sx={{ px: 2, pt: 2 }}>
-        {menuItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = pathname === item.path;
-          
-          return (
-            <ListItem key={item.text} disablePadding sx={{ mb: 1 }}>
-              <ListItemButton
-                onClick={() => handleNavigation(item.path)}
-                sx={{
-                  borderRadius: 2,
-                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  },
-                }}
-              >
-                <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
-                  <Icon />
-                </ListItemIcon>
-                <ListItemText 
-                  primary={item.text} 
-                  sx={{ 
-                    '& .MuiTypography-root': { 
-                      fontWeight: isActive ? 600 : 400,
-                      color: 'white',
-                    } 
-                  }} 
-                />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
+      <List sx={{ mt: 2 }}>
+        {menuItems.map((item) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton
+              component={Link}
+              href={item.path}
+              sx={{
+                mx: 1,
+                borderRadius: 2,
+                mb: 0.5,
+                backgroundColor: pathname === item.path ? 'rgba(255,255,255,0.1)' : 'transparent',
+                '&:hover': {
+                  backgroundColor: 'rgba(255,255,255,0.1)',
+                },
+              }}
+            >
+              <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText 
+                primary={item.text} 
+                sx={{ 
+                  '& .MuiTypography-root': { 
+                    fontWeight: pathname === item.path ? 600 : 400 
+                  } 
+                }} 
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Drawer>
   );
