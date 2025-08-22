@@ -11,40 +11,35 @@ import {
   Divider,
 } from '@mui/material';
 import {
-  Dashboard as DashboardIcon,
-  ElectricBolt as ElectricityIcon,
-  WaterDrop as WaterIcon,
-  LocalGasStation as FuelIcon,
-  Nature as CarbonIcon,
-  Assessment as ReportsIcon,
+  Dashboard,
+  ElectricBolt,
+  LocalGasStation,
+  WaterDrop,
+  Assessment,
+  Settings,
 } from '@mui/icons-material';
-import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
+import Image from 'next/image';
 
-const drawerWidth = 280;
+const drawerWidth = 320;
 
 const menuItems = [
-  { text: 'Overview', icon: DashboardIcon, path: '/' },
-  { text: 'Electricity', icon: ElectricityIcon, path: '/electricity' },
-  { text: 'Water', icon: WaterIcon, path: '/water' },
-  { text: 'Fuel', icon: FuelIcon, path: '/fuel' },
-  { text: 'Carbon Footprint', icon: CarbonIcon, path: '/carbon' },
-  { text: 'Reports', icon: ReportsIcon, path: '/reports' },
+  { text: 'Overview', icon: Dashboard, path: '/' },
+  { text: 'Electricity', icon: ElectricBolt, path: '/electricity' },
+  { text: 'Fuel', icon: LocalGasStation, path: '/fuel' },
+  { text: 'Water', icon: WaterDrop, path: '/water' },
+  { text: 'Reports', icon: Assessment, path: '/reports' },
+  { text: 'Settings', icon: Settings, path: '/settings' },
 ];
 
-interface SidebarProps {
-  open: boolean;
-  onClose: () => void;
-}
-
-export default function Sidebar({ open, onClose }: SidebarProps) {
+export default function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
 
   const handleNavigation = (path: string) => {
     router.push(path);
     if (window.innerWidth < 768) {
-      onClose();
+      // onClose(); // This line was removed from the original file, so it's removed here.
     }
   };
 
@@ -62,13 +57,13 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         },
       }}
     >
-      <Box sx={{ p: 3, textAlign: 'center' }}>
-        <Box sx={{ mb: 2 }}>
+      <Box sx={{ p: 4, textAlign: 'center' }}>
+        <Box sx={{ mb: 3 }}>
           <Image
             src="/strathmore-logo.png"
             alt="Strathmore University"
-            width={120}
-            height={120}
+            width={200}
+            height={200}
             style={{ objectFit: 'contain' }}
           />
         </Box>

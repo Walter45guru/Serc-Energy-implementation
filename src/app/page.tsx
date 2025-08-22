@@ -32,7 +32,7 @@ import Layout from '@/components/Layout/Layout';
 const summaryData = [
   {
     title: 'Total Electricity',
-    value: '45,230 kWh',
+    value: '55,695 kWh',
     change: '+12.5%',
     trend: 'up',
     icon: ElectricBolt,
@@ -40,15 +40,15 @@ const summaryData = [
   },
   {
     title: 'Total Water',
-    value: '2,450 m³',
-    change: '-8.2%',
-    trend: 'down',
+    value: '55,695 m³',
+    change: '+0.8%',
+    trend: 'up',
     icon: WaterDrop,
     color: '#06b6d4',
   },
   {
     title: 'Total Fuel',
-    value: '1,280 L',
+    value: '2,450 L',
     change: '+5.7%',
     trend: 'up',
     icon: LocalGasStation,
@@ -65,20 +65,23 @@ const summaryData = [
 ];
 
 const trendData = [
-  { month: 'Jan', electricity: 4200, water: 180, fuel: 95, carbon: 1.2 },
-  { month: 'Feb', electricity: 3800, water: 165, fuel: 88, carbon: 1.1 },
-  { month: 'Mar', electricity: 4500, water: 190, fuel: 102, carbon: 1.3 },
-  { month: 'Apr', electricity: 4100, water: 175, fuel: 96, carbon: 1.2 },
-  { month: 'May', electricity: 4800, water: 200, fuel: 110, carbon: 1.4 },
-  { month: 'Jun', electricity: 5200, water: 220, fuel: 118, carbon: 1.5 },
+  { month: 'Jan', electricity: 4600, water: 4600, fuel: 95, carbon: 1.2 },
+  { month: 'Feb', electricity: 4400, water: 4400, fuel: 88, carbon: 1.1 },
+  { month: 'Mar', electricity: 4800, water: 4800, fuel: 102, carbon: 1.3 },
+  { month: 'Apr', electricity: 4700, water: 4700, fuel: 96, carbon: 1.2 },
+  { month: 'May', electricity: 5000, water: 5000, fuel: 110, carbon: 1.4 },
+  { month: 'Jun', electricity: 5200, water: 5200, fuel: 118, carbon: 1.5 },
 ];
 
 const buildingData = [
-  { building: 'Main Campus', electricity: 18000, water: 800, fuel: 450 },
-  { building: 'Business School', electricity: 12000, water: 600, fuel: 320 },
-  { building: 'Engineering', electricity: 9800, water: 450, fuel: 280 },
-  { building: 'Library', electricity: 3500, water: 200, fuel: 120 },
-  { building: 'Student Center', electricity: 4200, water: 250, fuel: 150 },
+  { building: 'Solandra 1', electricity: 18500, water: 800, fuel: 450 },
+  { building: 'STMB, SBS, MSB, STC, Forge', electricity: 12000, water: 600, fuel: 320 },
+  { building: 'Mvule, Phase 1, Clinic, Audit, Oval', electricity: 9800, water: 450, fuel: 280 },
+  { building: 'Keri', electricity: 3500, water: 200, fuel: 120 },
+  { building: 'Olokire', electricity: 4200, water: 250, fuel: 150 },
+  { building: 'Solandra 2', electricity: 2800, water: 150, fuel: 80 },
+  { building: 'Mbagathi', electricity: 1800, water: 100, fuel: 60 },
+  { building: 'Sports Complex', electricity: 3200, water: 180, fuel: 100 },
 ];
 
 export default function OverviewPage() {
@@ -219,16 +222,16 @@ export default function OverviewPage() {
                 </Typography>
                 <Box sx={{ '& > *': { mb: 1 } }}>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Solar generation increased by 15% this month
+                    • Solandra 1 leads in electricity consumption (18,500 kWh)
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Water consumption reduced due to new efficiency measures
+                    • STMB, SBS, MSB, STC, Forge complex shows high water usage
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Fuel efficiency improved by 8% with new vehicle maintenance
+                    • Fuel efficiency improved with new vehicle fleet management
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Carbon footprint on track to meet annual reduction target
+                    • Solar generation integration planned for residential buildings
                   </Typography>
                 </Box>
               </CardContent>
@@ -243,16 +246,16 @@ export default function OverviewPage() {
                 </Typography>
                 <Box sx={{ '& > *': { mb: 1 } }}>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Consider expanding solar panel installation
+                    • Implement IoT monitoring for Solandra residential buildings
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Implement smart water monitoring systems
+                    • Upgrade water systems in STMB, SBS, MSB, STC, Forge complex
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Schedule regular vehicle maintenance for fuel efficiency
+                    • Solar panel installation on Keri and Olokire buildings
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    • Continue energy awareness campaigns
+                    • Energy efficiency audit for Mbagathi and Sports Complex
                   </Typography>
                 </Box>
               </CardContent>

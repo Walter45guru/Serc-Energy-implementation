@@ -3,7 +3,7 @@ import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from '@/theme/theme';
 import Sidebar from './Sidebar';
 
-const drawerWidth = 280;
+const drawerWidth = 320;
 
 interface LayoutProps {
   children: React.ReactNode;
